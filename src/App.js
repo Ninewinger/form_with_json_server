@@ -7,7 +7,7 @@ import ModalForm from './components/ModalForm';
 
 function App() {
 
-  const [url] = useState("https://4000-magenta-goat-ykk0450d.ws-us16.gitpod.io/faq/");
+  const [url] = useState("https://4000-magenta-goat-ykk0450d.ws-us16.gitpod.io/faq");
   //let nombre = "Luis Rodriguez";
   //console.log(nombre.toLowerCase().trim().split(""));
 
@@ -74,6 +74,7 @@ function App() {
     }
 
     updateFAQ(fq, id);
+    console.log(fq)
     setId(null);
     setQuestion("");
     setAnswer("");
@@ -147,6 +148,24 @@ function App() {
       .catch((error) => console.log(error))
   }
 
+  const deleteFAQ = ({ id }) => {
+    fetch(`${url}/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        //let newFaq = [...faq]; // [...faq].concat(data)
+        //newFaq.push(data);
+        //setFaq(newFaq)
+        getFAQ();
+      })
+
+  }
+
   return (
     <>
       <div className="container">
@@ -162,7 +181,7 @@ function App() {
         </div>
         <div className="row">
           <div className="col-md-12 py-5">
-            <Accordion faq={faq} search={search} setFAQ={setFAQ} />
+            <Accordion faq={faq} search={search} setFAQ={setFAQ} deleteFAQ={deleteFAQ} />
           </div>
         </div>
         {
