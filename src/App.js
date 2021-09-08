@@ -7,7 +7,7 @@ import ModalForm from './components/ModalForm';
 
 function App() {
 
-  const [url] = useState("https://4000-fuchsia-swordfish-png4moq9.ws-us16.gitpod.io/faq");
+  const [url] = useState("https://4000-magenta-goat-ykk0450d.ws-us16.gitpod.io/faq/");
   //let nombre = "Luis Rodriguez";
   //console.log(nombre.toLowerCase().trim().split(""));
 
